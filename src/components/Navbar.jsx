@@ -6,15 +6,15 @@ import Avatar from "../assets/images/image-avatar.png";
 
 const Navbar = () => {
   return (
-    <nav className="border-b border-gray-300 py-4">
-      <div className="container mx-auto flex items-center justify-between">
+    <nav className="py-4 border-b border-gray-300">
+      <div className="container flex items-center justify-between mx-auto">
         {/* Left Section: Logo + Nav Links */}
         <div className="flex items-center gap-8">
           {/* Logo */}
           <img src={Logo} alt="logo" className="h-6" />
 
           {/* Navigation Links */}
-          <ul className="flex gap-6 text-gray-600">
+          <ul className="flex gap-6 text-gray-500">
             <li>
               <NavLink
                 to="/"
