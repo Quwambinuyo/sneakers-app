@@ -19,7 +19,9 @@ const Navbar = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "text-black font-semibold" : "hover:text-gray-900"
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    : "hover:text-gray-900"
                 }
               >
                 Collections
@@ -29,7 +31,9 @@ const Navbar = () => {
               <NavLink
                 to="/men"
                 className={({ isActive }) =>
-                  isActive ? "text-black font-semibold" : "hover:text-gray-900"
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    : "hover:text-gray-900"
                 }
               >
                 Men
@@ -39,7 +43,9 @@ const Navbar = () => {
               <NavLink
                 to="/women"
                 className={({ isActive }) =>
-                  isActive ? "text-black font-semibold" : "hover:text-gray-900"
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    : "hover:text-gray-900"
                 }
               >
                 Women
@@ -49,7 +55,9 @@ const Navbar = () => {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  isActive ? "text-black font-semibold" : "hover:text-gray-900"
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    : "hover:text-gray-900"
                 }
               >
                 About
@@ -59,7 +67,9 @@ const Navbar = () => {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  isActive ? "text-black font-semibold" : "hover:text-gray-900"
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    : "hover:text-gray-900"
                 }
               >
                 Contact
