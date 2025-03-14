@@ -17,10 +17,10 @@ const Navbar = () => {
           <ul className="flex gap-6 text-gray-500">
             <li>
               <NavLink
-                to="/"
+                to="/collection"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
@@ -32,7 +32,7 @@ const Navbar = () => {
                 to="/men"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
@@ -44,7 +44,7 @@ const Navbar = () => {
                 to="/women"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
@@ -56,7 +56,7 @@ const Navbar = () => {
                 to="/about"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
@@ -68,7 +68,7 @@ const Navbar = () => {
                 to="/contact"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700 "
+                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
