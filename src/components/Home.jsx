@@ -3,6 +3,8 @@ import Data from "../Data";
 import cartIcon from "../assets/images/icon-cart.svg";
 import minuIcon from "../assets/images/icon-minus.svg";
 import plusIcon from "../assets/images/icon-plus.svg";
+import nextIcon from "../assets/images/icon-next.svg";
+import prevIcon from "../assets/images/icon-previous.svg"; // You need to use the correct icon for prev
 
 const Home = ({ addToCart }) => {
   const [selectedSneaker, setSelectedSneaker] = useState(Data[0]);
@@ -34,19 +36,54 @@ const Home = ({ addToCart }) => {
       },
       quantity
     );
+    setSuccessMessage("Sneaker added to cart!"); // Display success message
+    setTimeout(() => setSuccessMessage(""), 3000); // Hide message after 3 seconds
+  };
+
+  // Handle next and prev sneaker selection
+  const handleNextSneaker = () => {
+    const currentIndex = Data.findIndex(
+      (sneaker) => sneaker.id === selectedSneaker.id
+    );
+    const nextIndex = (currentIndex + 1) % Data.length; // Loop back to the first sneaker
+    setSelectedSneaker(Data[nextIndex]);
+  };
+
+  const handlePrevSneaker = () => {
+    const currentIndex = Data.findIndex(
+      (sneaker) => sneaker.id === selectedSneaker.id
+    );
+    const prevIndex = (currentIndex - 1 + Data.length) % Data.length; // Loop back to the last sneaker
+    setSelectedSneaker(Data[prevIndex]);
   };
 
   return (
     <section className="flex flex-col md:flex-row md:gap-8 md:mt-[50px] items-center pb-3">
-      <div className="flex flex-col items-center md:w-[500px]">
-        <div className="mb-4">
+      <div className="flex flex-col items-center md:w-[500px] relative">
+        {/* Image with next and prev buttons */}
+        <div className="relative mb-4">
           <img
             src={selectedSneaker.images.img}
             alt={selectedSneaker.name}
             className="w-full object-cover md:rounded-md md:min-w-[350px] md:h-[350px]"
           />
+
+          {/* Prev and Next buttons */}
+          <button
+            onClick={handlePrevSneaker}
+            className="absolute p-2 transform -translate-y-1/2 bg-white rounded-full md:hidden left-4 top-1/2 hover:opacity-50"
+          >
+            <img src={prevIcon} alt="Previous" className="w-6 h-6" />
+          </button>
+          <button
+            onClick={handleNextSneaker}
+            className="absolute p-2 transform -translate-y-1/2 bg-white rounded-full md:hidden right-4 top-1/2 hover:opacity-50"
+          >
+            <img src={nextIcon} alt="Next" className="w-6 h-6" />
+          </button>
         </div>
 
+        {/* Thumbnails for desktop navigation */}
         <div className="hidden gap-2 md:flex md:gap-4">
           {Data.map((sneaker) => (
             <button
