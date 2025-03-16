@@ -20,6 +20,11 @@ const Home = ({ addToCart }) => {
     }
   };
 
+  // Calculate the discount price based on the discount percentage
+  const calculateDiscountPrice = (price, discount) => {
+    return (price - price * (discount / 100)).toFixed(2);
+  };
+
   const handleAddToCart = () => {
     // Pass the thumbnail image instead of the full-size image
     addToCart(
@@ -74,14 +79,20 @@ const Home = ({ addToCart }) => {
 
         <div className="flex flex-col mt-4 md:flex-row md:items-center md:gap-8">
           <div className="flex items-center gap-2">
-            <h3 className="text-3xl font-bold">${selectedSneaker.price}</h3>
+            <h3 className="text-3xl font-bold">
+              $
+              {calculateDiscountPrice(
+                selectedSneaker.price,
+                selectedSneaker.discount
+              )}
+            </h3>
             <span className="p-1 text-sm font-semibold text-white bg-black rounded-sm">
-              50%
+              {selectedSneaker.discount}%
             </span>
           </div>
 
           <h4 className="mt-1 text-sm text-gray-500 line-through md:mt-0">
-            $250.00
+            ${selectedSneaker.price}
           </h4>
         </div>
 
