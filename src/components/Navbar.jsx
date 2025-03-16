@@ -8,8 +8,7 @@ import Cart from "./Cart";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false); // For managing cart visibility
-
+  const [cartOpen, setCartOpen] = useState(false);
   const handleLogoClick = () => {
     navigate("/");
   };
@@ -19,7 +18,7 @@ const Navbar = () => {
   };
 
   const toggleCart = () => {
-    setCartOpen(!cartOpen); // Toggle the cart visibility
+    setCartOpen(!cartOpen);
   };
 
   return (
@@ -183,7 +182,7 @@ const Navbar = () => {
             src={cartIcon}
             alt="cart"
             className="w-6 h-6 cursor-pointer"
-            onClick={toggleCart} // Toggle cart visibility
+            onClick={toggleCart}
           />
           <img
             src={Avatar}

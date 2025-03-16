@@ -12,6 +12,8 @@ const Data = [
   {
     id: 1,
     name: "Fall Limited Edition Sneakers",
+    price: 125,
+    quantity: 3,
     images: {
       img: Sneakers1,
       thumbnail: Thumbnail1,
@@ -20,6 +22,8 @@ const Data = [
   {
     id: 2,
     name: "Fall Limited Edition Sneakers",
+    price: 125,
+    quantity: 3,
     images: {
       img: Sneakers2,
       thumbnail: Thumbnail2,
@@ -28,6 +32,8 @@ const Data = [
   {
     id: 3,
     name: "Fall Limited Edition Sneakers",
+    price: 125,
+    quantity: 3,
     images: {
       img: Sneakers3,
       thumbnail: Thumbnail3,
@@ -36,6 +42,8 @@ const Data = [
   {
     id: 4,
     name: "Fall Limited Edition Sneakers",
+    price: 125,
+    quantity: 3,
     images: {
       img: Sneakers4,
       thumbnail: Thumbnail4,
