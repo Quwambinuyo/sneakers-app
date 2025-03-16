@@ -12,7 +12,8 @@ const Data = [
   {
     id: 1,
     name: "Fall Limited Edition Sneakers",
-    price: 125,
+    price: 105,
+    discount: 50,
     quantity: 3,
     images: {
       img: Sneakers1,
@@ -21,8 +22,9 @@ const Data = [
   },
   {
     id: 2,
-    name: "Fall Limited Edition Sneakers",
-    price: 125,
+    name: "Snow Limited Edition Sneakers",
+    price: 412,
+    discount: 30,
     quantity: 3,
     images: {
       img: Sneakers2,
@@ -31,8 +33,9 @@ const Data = [
   },
   {
     id: 3,
-    name: "Fall Limited Edition Sneakers",
-    price: 125,
+    name: "Summer Limited Edition Sneakers",
+    price: 530,
+    discount: 60,
     quantity: 3,
     images: {
       img: Sneakers3,
@@ -41,8 +44,9 @@ const Data = [
   },
   {
     id: 4,
-    name: "Fall Limited Edition Sneakers",
-    price: 125,
+    name: "Spring Limited Edition Sneakers",
+    price: 805,
+    discount: 70,
     quantity: 3,
     images: {
       img: Sneakers4,

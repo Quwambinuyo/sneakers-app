@@ -21,7 +21,14 @@ const Home = ({ addToCart }) => {
   };
 
   const handleAddToCart = () => {
-    addToCart(selectedSneaker, quantity);
+    // Pass the thumbnail image instead of the full-size image
+    addToCart(
+      {
+        ...selectedSneaker,
+        image: selectedSneaker.images.thumbnail, // Use the thumbnail image here
+      },
+      quantity
+    );
   };
 
   return (
