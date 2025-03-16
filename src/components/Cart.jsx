@@ -23,9 +23,9 @@ const Cart = () => {
         {/* Details Section */}
         <div className="flex flex-col justify-between flex-1">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold">{items.name}</p>
+            <p className="text-[10px] font-semibold">{items.name}</p>
             <button>
-              <img src={DeleteIcon} alt="Delete" className="w-4 h-4" />
+              <img src={DeleteIcon} alt="Delete" className="w-3 h-3" />
             </button>
           </div>
           <div className="flex items-center gap-2">

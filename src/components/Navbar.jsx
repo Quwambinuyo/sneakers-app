@@ -54,7 +54,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                : "hover:text-gray-900"
+                : "hover:text-gray-700"
             }
           >
             Collections
@@ -64,7 +64,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                : "hover:text-gray-900"
+                : "hover:text-gray-700"
             }
           >
             Men
@@ -74,7 +74,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                : "hover:text-gray-900"
+                : "hover:text-gray-700"
             }
           >
             Women
@@ -84,7 +84,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                : "hover:text-gray-900"
+                : "hover:text-gray-700"
             }
           >
             About
@@ -94,7 +94,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                : "hover:text-gray-900"
+                : "hover:text-gray-700"
             }
           >
             Contact
@@ -111,7 +111,7 @@ const Navbar = () => {
             ></div>
 
             {/* Mobile Menu */}
-            <div className="fixed top-0 left-0 z-50 flex flex-col w-2/3 h-screen gap-6 p-6 text-gray-500 bg-white shadow-md">
+            <div className="fixed top-0 left-0 z-50 flex flex-col w-2/3 h-screen gap-6 p-6 font-semibold text-gray-700 bg-white shadow-md">
               {/* Close (X) Button Inside Menu */}
               <div
                 className="self-start mb-4 cursor-pointer"
@@ -128,7 +128,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                    : "hover:text-gray-900"
+                    : "hover:text-gray-500"
                 }
               >
                 Collections
@@ -138,7 +138,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                    : "hover:text-gray-900"
+                    : "hover:text-gray-500"
                 }
               >
                 Men
@@ -148,7 +148,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                    : "hover:text-gray-900"
+                    : "hover:text-gray-500"
                 }
               >
                 Women
@@ -158,7 +158,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                    : "hover:text-gray-900"
+                    : "hover:text-gray-500"
                 }
               >
                 About
@@ -168,7 +168,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
-                    : "hover:text-gray-900"
+                    : "hover:text-gray-500"
                 }
               >
                 Contact

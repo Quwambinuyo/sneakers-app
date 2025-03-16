@@ -16,7 +16,7 @@ const Home = () => {
           <img
             src={selectedSneaker.images.img}
             alt={selectedSneaker.name}
-            className="w-full object-cover rounded-md md:min-w-[350px] md:h-[350px]"
+            className="w-full object-cover md:rounded-md md:min-w-[350px] md:h-[350px]"
           />
         </div>
 
