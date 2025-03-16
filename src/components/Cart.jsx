@@ -8,44 +8,38 @@ const Cart = ({ cartItems, removeItem }) => {
       </div>
 
       <div className="flex flex-col gap-4 overflow-y-auto max-h-[400px]">
-        {cartItems.length === 0 ? (
-          <p className="text-center text-gray-500">Your cart is empty</p>
-        ) : (
-          cartItems.map((item) => (
-            <div
-              key={item.id}
-              className="flex items-center gap-2 py-6 md:py-3 h-1/2"
-            >
-              <div className="flex-shrink-0">
-                <img
-                  src={item.images.thumbnail}
-                  alt={item.name}
-                  className="w-[50px] h-[50px] object-cover rounded-md"
-                />
-              </div>
+        {" "}
+        {/* Adjust max-height as needed */}
+        {/* item 1 start */}
+        <div className="flex items-center gap-2 py-6 md:py-3 h-1/2">
+          {/* Image Section */}
+          <div className="flex-shrink-0">
+            <img
+              src={items.images.thumbnail}
+              alt="Item"
+              className="w-[50px] h-[50px] object-cover rounded-md"
+            />
+          </div>
 
-              <div className="flex flex-col justify-between flex-1">
-                <div className="flex items-center justify-between">
-                  <p className="text-[10px] font-semibold">{item.name}</p>
-                  <button onClick={() => removeItem(item.id)}>
-                    <img src={DeleteIcon} alt="Delete" className="w-3 h-3" />
-                  </button>
-                </div>
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-semibold text-gray-400">
-                    ${item.price}
-                  </p>
-                  <p className="text-sm font-semibold text-gray-600">
-                    x {item.quantity}
-                  </p>
-                  <p className="font-bold text-md">
-                    ${item.price * item.quantity}
-                  </p>
-                </div>
-              </div>
+          <div className="flex flex-col justify-between flex-1">
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-semibold">{item.name}</p>
+              <button onClick={() => removeItem(item.id)}>
+                <img src={DeleteIcon} alt="Delete" className="w-3 h-3" />
+              </button>
             </div>
-          ))
-        )}
+            <div className="flex items-center gap-2">
+              <p className="text-sm font-semibold text-gray-400">
+                ${item.price}
+              </p>
+              <p className="text-sm font-semibold text-gray-600">
+                x {item.quantity}
+              </p>
+              <p className="font-bold text-md">${item.price * item.quantity}</p>
+            </div>
+          </div>
+        </div>
+        )) )}
       </div>
 
       <div className="flex items-center justify-center w-[100%]">
