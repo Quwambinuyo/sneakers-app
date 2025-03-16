@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import Logo from "../assets/images/logo.svg";
 import cartIcon from "../assets/images/icon-cart.svg";
 import Avatar from "../assets/images/image-avatar.png";
@@ -8,98 +7,125 @@ import Cart from "./Cart";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogoClick = () => {
     navigate("/");
   };
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="py-4 border-b border-gray-300">
-      <div className="container flex items-center justify-between mx-auto">
-        {/* Left Section: Logo + Nav Links */}
-        <div className="flex items-center gap-8">
-          {/* Logo */}
-          <div onClick={handleLogoClick} className="cursor-pointer">
-            <img src={Logo} alt="logo" className="h-6" />
+    <nav className="px-2 py-4 border-b border-gray-300">
+      <div className="container relative flex items-center justify-between mx-auto">
+        {/* Left Section: Hamburger + Logo */}
+        <div className="flex items-center gap-4">
+          {/* Hamburger Menu  */}
+          <div className="z-50 cursor-pointer md:hidden" onClick={toggleMenu}>
+            {!isOpen ? (
+              // Hamburger Icon
+              <div className="space-y-1">
+                <div className="w-6 h-0.5 bg-gray-900"></div>
+                <div className="w-6 h-0.5 bg-gray-900"></div>
+                <div className="w-6 h-0.5 bg-gray-900"></div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
-          {/* Navigation Links */}
-          <ul className="hidden gap-6 text-gray-500 md:flex">
-            <li>
+          {/* Logo */}
+          <div onClick={handleLogoClick} className="cursor-pointer md:block">
+            <img src={Logo} alt="logo" className="h-6" />
+          </div>
+        </div>
+
+        {/* Mobile Navigation - Full Screen */}
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 z-40 bg-black opacity-50 md:hidden"
+              onClick={toggleMenu}
+            ></div>
+
+            {/* Mobile Menu */}
+            <div className="fixed top-0 left-0 z-50 flex flex-col w-2/3 h-screen gap-6 p-6 text-gray-500 bg-white shadow-md">
+              {/* Close (X) Button Inside Menu */}
+              <div
+                className="self-start mb-4 cursor-pointer"
+                onClick={toggleMenu}
+              >
+                <div className="relative w-6 h-6">
+                  <div className="absolute left-0 w-4 h-0.5 rotate-45 bg-gray-500 top-1/2"></div>
+                  <div className="absolute left-0 w-4 h-0.5 -rotate-45 bg-gray-500 top-1/2"></div>
+                </div>
+              </div>
+
               <NavLink
                 to="/collection"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
                 Collections
               </NavLink>
-            </li>
-            <li>
               <NavLink
                 to="/men"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
                 Men
               </NavLink>
-            </li>
-            <li>
               <NavLink
                 to="/women"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
                 Women
               </NavLink>
-            </li>
-            <li>
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
                 About
               </NavLink>
-            </li>
-            <li>
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-black font-semibold border-b-2 pb-4 border-orange-700"
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
                     : "hover:text-gray-900"
                 }
               >
                 Contact
               </NavLink>
-            </li>
-          </ul>
-        </div>
+            </div>
+          </>
+        )}
 
         {/* Right Section: Cart + Avatar */}
-        <div className="relative flex items-center gap-6 bg-red-500 group">
-          {/* Cart Icon */}
+        <div className="relative z-30 flex items-center gap-6">
           <img src={cartIcon} alt="cart" className="w-6 h-6 cursor-pointer" />
-          {/* Avatar Icon */}
           <img
             src={Avatar}
             alt="avatar"
             className="w-10 h-10 rounded-full cursor-pointer"
           />
-
-          {/* Cart Component */}
           <Cart />
         </div>
       </div>

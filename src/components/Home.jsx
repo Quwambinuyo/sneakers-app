@@ -8,20 +8,20 @@ const Home = () => {
   const [selectedSneaker, setSelectedSneaker] = useState(Data[0]);
 
   return (
-    <section className="flex gap-20 items-center mt-[100px]">
+    <section className="flex flex-col md:flex-row md:gap-20 items-center md:mt-[50px]">
       {/* Image Section */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center md:w-[500px]">
         {/* Main Image */}
         <div className="mb-4">
           <img
             src={selectedSneaker.images.img}
             alt={selectedSneaker.name}
-            className="w-[290px] h-[290px] object-cover rounded-md"
+            className="md:w-[290px] md:h-[290px] w-full object-cover md:rounded-md"
           />
         </div>
 
-        {/* Thumbnails */}
-        <div className="flex gap-2">
+        {/* Thumbnails - Hidden on Mobile */}
+        <div className="hidden gap-2 md:flex">
           {Data.map((sneaker) => (
             <button
               key={sneaker.id}
@@ -43,7 +43,7 @@ const Home = () => {
       </div>
 
       {/* Text Section */}
-      <div className="max-w-[500px]">
+      <div className="flex flex-col items-center px-3 text-center md:items-start md:text-left">
         <p className="text-sm text-gray-500">SNEAKER COMPANY</p>
         <h1 className="my-4 text-4xl font-bold">{selectedSneaker.name}</h1>
         <p className="text-gray-700">
@@ -52,16 +52,26 @@ const Home = () => {
           can offer.
         </p>
 
-        <div className="flex flex-row items-center gap-2 mt-4">
-          <h3 className="text-3xl font-bold">$125.00</h3>
-          <span className="text-sm font-semibold text-white bg-black p-0.5 rounded-sm">
-            50%
-          </span>
+        {/* Price Section */}
+        <div className="flex flex-col mt-4 md:flex-row md:items-center md:gap-4">
+          {/* Price & Discount */}
+          <div className="flex items-center gap-2">
+            <h3 className="text-3xl font-bold">$125.00</h3>
+            <span className="p-1 text-sm font-semibold text-white bg-black rounded-sm">
+              50%
+            </span>
+          </div>
+
+          {/* Original Price */}
+          <h4 className="mt-1 text-sm text-gray-500 line-through md:mt-0">
+            $250.00
+          </h4>
         </div>
 
-        <div className="flex flex-row items-center gap-6 mt-4">
+        {/* Quantity & Add to Cart */}
+        <div className="flex flex-col items-center w-full gap-4 mt-4 md:flex-row md:gap-6">
           {/* Quantity Selector */}
-          <div className="flex items-center bg-gray-200 p-2 rounded-md w-[100px] justify-between">
+          <div className="flex items-center bg-gray-200 p-3 rounded-md w-[80%] md:w-[100px] justify-between">
             <button type="button">
               <img src={minuIcon} alt="minus" />
             </button>
@@ -72,10 +82,10 @@ const Home = () => {
           </div>
 
           {/* Add to Cart Button */}
-          <div className="flex flex-row items-center gap-2 bg-orange-800 justify-center p-2 rounded-md w-[150px]">
-            <img src={cartIcon} alt="cart" className="w-3 h-3" />
+          <button className="flex flex-row items-center gap-2 bg-orange-800 justify-center p-3 rounded-md w-[80%] md:w-[150px]">
+            <img src={cartIcon} alt="cart" className="w-4 h-4" />
             <p className="text-sm font-semibold text-black">Add to cart</p>
-          </div>
+          </button>
         </div>
       </div>
     </section>
