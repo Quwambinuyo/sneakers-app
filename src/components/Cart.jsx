@@ -6,7 +6,7 @@ const Cart = () => {
   const [items, setItems] = useState(Data[0]);
 
   return (
-    <section className="absolute hidden group-hover:block transition-opacity duration-200 bg-white rounded-md w-[300px] h-[220px] shadow-[-3px_4px_10px_-3px_rgba(0,0,0,0.3)] right-0 top-10">
+    <section className="absolute right-0  top-[60px] w-[300px] bg-white rounded-md shadow-md p-4">
       <div className="pt-2 pb-6 pl-2 border-gray-400 border-b-1">
         <h3 className="font-bold">Cart</h3>
       </div>
@@ -15,7 +15,7 @@ const Cart = () => {
         <div className="flex-shrink-0">
           <img
             src={items.images.thumbnail}
-            alt=""
+            alt="Item"
             className="w-[50px] h-[50px] object-cover rounded-md"
           />
         </div>
@@ -29,7 +29,7 @@ const Cart = () => {
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <p className="text-sm">${items.price}</p>
+            <p className="text-sm">$125</p>
             <p className="text-sm">x3</p>
             <p className="font-bold text-md">$375</p>
           </div>

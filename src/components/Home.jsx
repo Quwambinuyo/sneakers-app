@@ -8,7 +8,7 @@ const Home = () => {
   const [selectedSneaker, setSelectedSneaker] = useState(Data[0]);
 
   return (
-    <section className="flex flex-col md:flex-row md:gap-20 items-center md:mt-[50px]">
+    <section className="flex  flex-col md:flex-row md:gap-8 md:mt-[50px] items-center">
       {/* Image Section */}
       <div className="flex flex-col items-center md:w-[500px]">
         {/* Main Image */}
@@ -16,12 +16,12 @@ const Home = () => {
           <img
             src={selectedSneaker.images.img}
             alt={selectedSneaker.name}
-            className="md:w-[290px] md:h-[290px] w-full object-cover md:rounded-md"
+            className="w-full object-cover rounded-md md:min-w-[350px] md:h-[350px]"
           />
         </div>
 
         {/* Thumbnails - Hidden on Mobile */}
-        <div className="hidden gap-2 md:flex">
+        <div className="hidden gap-2 md:flex md:gap-4">
           {Data.map((sneaker) => (
             <button
               key={sneaker.id}
@@ -35,7 +35,7 @@ const Home = () => {
               <img
                 src={sneaker.images.thumbnail}
                 alt={sneaker.name}
-                className="w-16 h-16 rounded-md"
+                className="w-20 h-20 rounded-md"
               />
             </button>
           ))}
@@ -53,7 +53,7 @@ const Home = () => {
         </p>
 
         {/* Price Section */}
-        <div className="flex flex-col mt-4 md:flex-row md:items-center md:gap-4">
+        <div className="flex flex-col mt-4 md:flex-row md:items-center md:gap-8">
           {/* Price & Discount */}
           <div className="flex items-center gap-2">
             <h3 className="text-3xl font-bold">$125.00</h3>
@@ -69,9 +69,9 @@ const Home = () => {
         </div>
 
         {/* Quantity & Add to Cart */}
-        <div className="flex flex-col items-center w-full gap-4 mt-4 md:flex-row md:gap-6">
+        <div className="flex flex-col items-center w-full gap-4 mt-4 md:flex-row md:gap-8">
           {/* Quantity Selector */}
-          <div className="flex items-center bg-gray-200 p-3 rounded-md w-[80%] md:w-[100px] justify-between">
+          <div className="flex items-center bg-gray-200 p-3 rounded-md w-[80%] md:w-[120px] justify-between">
             <button type="button">
               <img src={minuIcon} alt="minus" />
             </button>
@@ -82,7 +82,7 @@ const Home = () => {
           </div>
 
           {/* Add to Cart Button */}
-          <button className="flex flex-row items-center gap-2 bg-orange-800 justify-center p-3 rounded-md w-[80%] md:w-[150px]">
+          <button className="flex flex-row items-center gap-2 bg-orange-800 justify-center p-3 rounded-md w-[80%] md:w-[180px]">
             <img src={cartIcon} alt="cart" className="w-4 h-4" />
             <p className="text-sm font-semibold text-black">Add to cart</p>
           </button>

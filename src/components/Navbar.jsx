@@ -8,6 +8,7 @@ import Cart from "./Cart";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false); // For managing cart visibility
 
   const handleLogoClick = () => {
     navigate("/");
@@ -17,9 +18,13 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const toggleCart = () => {
+    setCartOpen(!cartOpen); // Toggle the cart visibility
+  };
+
   return (
     <nav className="px-2 py-4 border-b border-gray-300">
-      <div className="container relative flex items-center justify-between mx-auto">
+      <div className="container relative flex items-center justify-between gap-3 mx-auto">
         {/* Left Section: Hamburger + Logo */}
         <div className="flex items-center gap-4">
           {/* Hamburger Menu  */}
@@ -40,6 +45,60 @@ const Navbar = () => {
           <div onClick={handleLogoClick} className="cursor-pointer md:block">
             <img src={Logo} alt="logo" className="h-6" />
           </div>
+        </div>
+
+        {/* Navigation Links (For md screens and up) */}
+        <div className="items-center hidden gap-6 md:flex">
+          <NavLink
+            to="/collection"
+            className={({ isActive }) =>
+              isActive
+                ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                : "hover:text-gray-900"
+            }
+          >
+            Collections
+          </NavLink>
+          <NavLink
+            to="/men"
+            className={({ isActive }) =>
+              isActive
+                ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                : "hover:text-gray-900"
+            }
+          >
+            Men
+          </NavLink>
+          <NavLink
+            to="/women"
+            className={({ isActive }) =>
+              isActive
+                ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                : "hover:text-gray-900"
+            }
+          >
+            Women
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                : "hover:text-gray-900"
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                : "hover:text-gray-900"
+            }
+          >
+            Contact
+          </NavLink>
         </div>
 
         {/* Mobile Navigation - Full Screen */}
@@ -120,13 +179,18 @@ const Navbar = () => {
 
         {/* Right Section: Cart + Avatar */}
         <div className="relative z-30 flex items-center gap-6">
-          <img src={cartIcon} alt="cart" className="w-6 h-6 cursor-pointer" />
+          <img
+            src={cartIcon}
+            alt="cart"
+            className="w-6 h-6 cursor-pointer"
+            onClick={toggleCart} // Toggle cart visibility
+          />
           <img
             src={Avatar}
             alt="avatar"
             className="w-10 h-10 rounded-full cursor-pointer"
           />
-          <Cart />
+          {cartOpen && <Cart />} {/* Render cart if open */}
         </div>
       </div>
     </nav>

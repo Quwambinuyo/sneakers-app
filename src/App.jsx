@@ -4,7 +4,7 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="md:w-3/4 md:mx-auto">
+    <div className="md:min-w-3xl md:max-w-4xl md:p-4 md:mx-auto">
       <BrowserRouter>
         <Navbar />
         <Routes>
