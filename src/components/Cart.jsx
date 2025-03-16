@@ -7,7 +7,6 @@ const Cart = ({ cartItems, removeItem }) => {
         <h3 className="font-bold">Cart</h3>
       </div>
 
-      {/* Cart Items List */}
       <div className="flex flex-col gap-4 overflow-y-auto max-h-[400px]">
         {cartItems.length > 0 ? (
           cartItems.map((item) => (
@@ -15,10 +14,9 @@ const Cart = ({ cartItems, removeItem }) => {
               key={item.id}
               className="flex items-center gap-2 py-6 md:py-3 h-1/2"
             >
-              {/* Image Section */}
               <div className="flex-shrink-0">
                 <img
-                  src={item.image} // Ensure 'image' is a valid property in the item object
+                  src={item.image}
                   alt={item.name}
                   className="w-[50px] h-[50px] object-cover rounded-md"
                 />
@@ -50,7 +48,6 @@ const Cart = ({ cartItems, removeItem }) => {
         )}
       </div>
 
-      {/* Checkout Button */}
       {cartItems.length > 0 && (
         <div className="flex items-center justify-center w-[100%]">
           <button className="w-full h-[50px] p-2 font-bold md:h-[40px] bg-orange-500 rounded-md cursor-pointer">

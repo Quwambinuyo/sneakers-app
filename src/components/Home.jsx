@@ -6,7 +6,7 @@ import plusIcon from "../assets/images/icon-plus.svg";
 
 const Home = ({ addToCart }) => {
   const [selectedSneaker, setSelectedSneaker] = useState(Data[0]);
-  const [quantity, setQuantity] = useState(1); // Default quantity starts at 1
+  const [quantity, setQuantity] = useState(1);
 
   // Function to handle increment
   const incrementQuantity = () => {
