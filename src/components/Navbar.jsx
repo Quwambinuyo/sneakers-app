@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="container relative flex items-center justify-between gap-3 mx-auto">
         {/* Left Section: Hamburger + Logo */}
         <div className="flex items-center gap-4">
-          {/* Hamburger Menu  */}
+          {/* Hamburger Menu */}
           <div className="z-50 cursor-pointer md:hidden" onClick={toggleMenu}>
             {!isOpen ? (
               // Hamburger Icon
@@ -178,18 +178,27 @@ const Navbar = () => {
 
         {/* Right Section: Cart + Avatar */}
         <div className="relative z-30 flex items-center gap-6">
-          <img
-            src={cartIcon}
-            alt="cart"
-            className="w-6 h-6 cursor-pointer"
-            onClick={toggleCart}
-          />
+          <div className="relative">
+            {/* Cart Icon */}
+            <img
+              src={cartIcon}
+              alt="cart"
+              className="w-6 h-6 cursor-pointer"
+              onClick={toggleCart}
+            />
+            {/* Cart Quantity Badge */}
+            <h3 className="absolute -top-2 -right-3 p-[10px] h-[12px] w-[12px] text-white rounded-full bg-orange-500 text-xs font-bold flex items-center justify-center">
+              0
+            </h3>
+          </div>
+
+          {/* Avatar */}
           <img
             src={Avatar}
             alt="avatar"
             className="w-10 h-10 rounded-full cursor-pointer"
           />
-          {cartOpen && <Cart />} {/* Render cart if open */}
+          {cartOpen && <Cart />}
         </div>
       </div>
     </nav>

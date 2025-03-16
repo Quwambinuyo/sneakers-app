@@ -12,7 +12,6 @@ const Cart = () => {
 
       {/* Scrollable container for items */}
       <div className="flex flex-col gap-4 overflow-y-auto max-h-[400px]">
-        {" "}
         {/* Adjust max-height as needed */}
         {/* item 1 start */}
         <div className="flex items-center gap-2 py-6 md:py-3 h-1/2">
