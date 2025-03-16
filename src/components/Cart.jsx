@@ -1,6 +1,22 @@
+import { useState } from "react";
 import DeleteIcon from "../assets/images/icon-delete.svg";
+import Spinner from "../assets/images/spinner.gif";
 
 const Cart = ({ cartItems, removeItem }) => {
+  const [loading, setLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false); // State for showing success message
+
+  const handleCheckout = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setPaymentSuccess(true); // Show success message after 3 seconds
+      setTimeout(() => {
+        window.location.reload(); // Refresh the page after 3 seconds
+      }, 500); // Delay refresh to allow success message to show first
+    }, 3000);
+  };
+
   return (
     <section className="absolute md:right-0 right-2 top-[60px] md:w-[300px] w-[360px] bg-white rounded-md shadow-md p-4 pb-8 md:pb-2">
       <div className="pt-2 pb-6 pl-2 border-gray-400 border-b-1">
@@ -48,11 +64,24 @@ const Cart = ({ cartItems, removeItem }) => {
         )}
       </div>
 
-      {cartItems.length > 0 && (
+      {cartItems.length > 0 && !paymentSuccess && (
         <div className="flex items-center justify-center w-[100%]">
-          <button className="w-full h-[50px] p-2 font-bold md:h-[40px] bg-orange-500 rounded-md cursor-pointer">
-            Checkout
+          <button
+            onClick={handleCheckout}
+            className="w-full h-[50px] p-2 font-bold md:h-[40px] bg-orange-500 rounded-md cursor-pointer"
+          >
+            {loading ? (
+              <img src={Spinner} alt="Loading..." className="w-6 h-6 mx-auto" />
+            ) : (
+              "Checkout"
+            )}
           </button>
+        </div>
+      )}
+
+      {paymentSuccess && (
+        <div className="p-4 mt-4 text-center text-green-800 bg-green-100 rounded-md">
+          <h4 className="font-bold">Payment Successful!</h4>
         </div>
       )}
     </section>

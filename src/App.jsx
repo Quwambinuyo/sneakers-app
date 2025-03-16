@@ -24,7 +24,7 @@ function App() {
     }
 
     // Show success message when item is added to cart
-    setSuccessMessage("Item successfully added to cart!");
+    setSuccessMessage("Item added to cart!");
     setTimeout(() => setSuccessMessage(""), 2000);
   };
 
@@ -33,7 +33,7 @@ function App() {
     setCartItems(cartItems.filter((item) => item.id !== id));
 
     // Show success message when item is removed from cart
-    setSuccessMessage("Item successfully removed from cart!");
+    setSuccessMessage("Item removed from cart!");
     setTimeout(() => setSuccessMessage(""), 2000);
   };
 
