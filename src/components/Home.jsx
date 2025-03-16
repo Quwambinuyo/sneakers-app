@@ -7,6 +7,7 @@ import plusIcon from "../assets/images/icon-plus.svg";
 const Home = ({ addToCart }) => {
   const [selectedSneaker, setSelectedSneaker] = useState(Data[0]);
   const [quantity, setQuantity] = useState(1);
+  const [successMessage, setSuccessMessage] = useState(""); // State for success message visibility
 
   // Function to handle increment
   const incrementQuantity = () => {
@@ -26,11 +27,10 @@ const Home = ({ addToCart }) => {
   };
 
   const handleAddToCart = () => {
-    // Pass the thumbnail image instead of the full-size image
     addToCart(
       {
         ...selectedSneaker,
-        image: selectedSneaker.images.thumbnail, // Use the thumbnail image here
+        image: selectedSneaker.images.thumbnail,
       },
       quantity
     );
@@ -80,7 +80,7 @@ const Home = ({ addToCart }) => {
         <div className="flex flex-col mt-4 md:flex-row md:items-center md:gap-8">
           <div className="flex items-center gap-2">
             <h3 className="text-3xl font-bold">
-              $
+              ${" "}
               {calculateDiscountPrice(
                 selectedSneaker.price,
                 selectedSneaker.discount
@@ -124,6 +124,13 @@ const Home = ({ addToCart }) => {
           </button>
         </div>
       </div>
+
+      {/* Custom success message */}
+      {successMessage && (
+        <div className="fixed px-4 py-2 text-white transform -translate-x-1/2 bg-green-500 rounded-md shadow-lg top-4 left-1/2">
+          {successMessage}
+        </div>
+      )}
     </section>
   );
 };

@@ -5,6 +5,7 @@ import Home from "./components/Home";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Function to add items to the cart
   const addToCart = (sneaker, quantity) => {
@@ -21,11 +22,19 @@ function App() {
       // Add new item to cart
       setCartItems([...cartItems, { ...sneaker, quantity }]);
     }
+
+    // Show success message when item is added to cart
+    setSuccessMessage("Item successfully added to cart!");
+    setTimeout(() => setSuccessMessage(""), 2000);
   };
 
   // Function to remove items from the cart
   const removeItem = (id) => {
     setCartItems(cartItems.filter((item) => item.id !== id));
+
+    // Show success message when item is removed from cart
+    setSuccessMessage("Item successfully removed from cart!");
+    setTimeout(() => setSuccessMessage(""), 2000);
   };
 
   return (
@@ -41,6 +50,13 @@ function App() {
           <Route path="/contact" element={<h1>Contact Page</h1>} />
         </Routes>
       </BrowserRouter>
+
+      {/* Custom success message */}
+      {successMessage && (
+        <div className="fixed px-4 py-2 text-white transform -translate-x-1/2 bg-green-500 rounded-md shadow-lg top-4 left-1/2">
+          {successMessage}
+        </div>
+      )}
     </div>
   );
 }

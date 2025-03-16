@@ -14,7 +14,6 @@ const Navbar = ({ cartItems = [], removeItem }) => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    document.body.classList.toggle("overflow-hidden", isOpen);
   };
 
   const toggleCart = () => setCartOpen((prev) => !prev);
