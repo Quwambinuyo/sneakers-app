@@ -21,7 +21,7 @@ const Home = ({ addToCart }) => {
   };
 
   const handleAddToCart = () => {
-    addToCart(selectedSneaker, quantity); // Pass sneaker and quantity to addToCart function
+    addToCart(selectedSneaker, quantity);
   };
 
   return (

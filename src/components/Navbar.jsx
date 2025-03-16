@@ -1,32 +1,37 @@
 import React, { useState } from "react";
-import Cart from "./Cart";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Logo from "../assets/images/logo.svg";
 import cartIcon from "../assets/images/icon-cart.svg";
 import Avatar from "../assets/images/image-avatar.png";
-import Data from "../Data";
+import Cart from "./Cart";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  };
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
   };
 
-  const addToCart = (item, quantity) => {
-    const newItem = { ...item, quantity };
-    setCartItems((prevItems) => [...prevItems, newItem]);
-  };
-
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
-
   return (
     <nav className="px-2 py-4 border-b border-gray-300">
       <div className="container relative flex items-center justify-between gap-3 mx-auto">
+        {/* Left Section: Hamburger + Logo */}
         <div className="flex items-center gap-4">
-          {/* Hamburger Menu  */}
+          {/* Hamburger Menu */}
           <div className="z-50 cursor-pointer md:hidden" onClick={toggleMenu}>
             {!isOpen ? (
               // Hamburger Icon
@@ -100,6 +105,83 @@ const Navbar = () => {
           </NavLink>
         </div>
 
+        {/* Mobile Navigation - Full Screen */}
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 z-40 bg-black opacity-50 md:hidden"
+              onClick={toggleMenu}
+            ></div>
+
+            {/* Mobile Menu */}
+            <div className="fixed top-0 left-0 z-50 flex flex-col w-2/3 h-screen gap-6 p-6 font-semibold text-gray-700 bg-white shadow-md">
+              {/* Close (X) Button Inside Menu */}
+              <div
+                className="self-start mb-4 cursor-pointer"
+                onClick={toggleMenu}
+              >
+                <div className="relative w-6 h-6">
+                  <div className="absolute left-0 w-4 h-0.5 rotate-45 bg-gray-500 top-1/2"></div>
+                  <div className="absolute left-0 w-4 h-0.5 -rotate-45 bg-gray-500 top-1/2"></div>
+                </div>
+              </div>
+
+              <NavLink
+                to="/collection"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                    : "hover:text-gray-500"
+                }
+              >
+                Collections
+              </NavLink>
+              <NavLink
+                to="/men"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                    : "hover:text-gray-500"
+                }
+              >
+                Men
+              </NavLink>
+              <NavLink
+                to="/women"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                    : "hover:text-gray-500"
+                }
+              >
+                Women
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                    : "hover:text-gray-500"
+                }
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-black font-semibold border-b-2 pb-2 border-orange-700"
+                    : "hover:text-gray-500"
+                }
+              >
+                Contact
+              </NavLink>
+            </div>
+          </>
+        )}
+
+        {/* Right Section: Cart + Avatar */}
         <div className="relative z-30 flex items-center gap-6">
           <div className="relative">
             {/* Cart Icon */}
