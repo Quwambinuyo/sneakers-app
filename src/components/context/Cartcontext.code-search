@@ -1,0 +1,32 @@
+# Query: Cartcontext
+# Flags: CaseSensitive RegExp OpenEditors
+# ContextLines: 1
+
+7 results - 3 files
+
+src\components\Home.jsx:
+   7  import prevIcon from "../assets/images/icon-previous.svg"; // You need to use the correct icon for prev
+   8: import { CartContext } from "./context/CartContext";
+   9  
+  10  const Home = () => {
+  11:   const { addToCart } = useContext(CartContext);
+  12  
+
+src\components\Navbar.jsx:
+   6  import Cart from "./Cart";
+   7: import { CartContext } from "./context/CartContext";
+   8  
+   9  const Navbar = () => {
+  10:   const { cartItems, removeItem } = useContext(CartContext);
+  11    const navigate = useNavigate();
+
+src\components\context\CartContext.jsx:
+   2  
+   3: export const CartContext = createContext();
+   4  
+
+  39    return (
+  40:     <CartContext.Provider value={{ cartItems, addToCart, removeItem }}>
+  41        {children}
+  42:     </CartContext.Provider>
+  43    );

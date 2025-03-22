@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Data from "../Data";
 import cartIcon from "../assets/images/icon-cart.svg";
 import minuIcon from "../assets/images/icon-minus.svg";
 import plusIcon from "../assets/images/icon-plus.svg";
 import nextIcon from "../assets/images/icon-next.svg";
 import prevIcon from "../assets/images/icon-previous.svg"; // You need to use the correct icon for prev
+import { CartContext } from "./context/CartContext";
 
-const Home = ({ addToCart }) => {
+const Home = () => {
+  const { addToCart, successMessage } = useContext(CartContext);
+
   const [selectedSneaker, setSelectedSneaker] = useState(Data[0]);
   const [quantity, setQuantity] = useState(1);
-  const [successMessage, setSuccessMessage] = useState(""); // State for success message visibility
 
   // Function to handle increment
   const incrementQuantity = () => {
@@ -36,8 +38,6 @@ const Home = ({ addToCart }) => {
       },
       quantity
     );
-    setSuccessMessage("Sneaker added to cart!"); // Display success message
-    setTimeout(() => setSuccessMessage(""), 3000); // Hide message after 3 seconds
   };
 
   // Handle next and prev sneaker selection
@@ -45,7 +45,7 @@ const Home = ({ addToCart }) => {
     const currentIndex = Data.findIndex(
       (sneaker) => sneaker.id === selectedSneaker.id
     );
-    const nextIndex = (currentIndex + 1) % Data.length; // Loop back to the first sneaker
+    const nextIndex = (currentIndex + 1) % Data.length;
     setSelectedSneaker(Data[nextIndex]);
   };
 
@@ -53,7 +53,7 @@ const Home = ({ addToCart }) => {
     const currentIndex = Data.findIndex(
       (sneaker) => sneaker.id === selectedSneaker.id
     );
-    const prevIndex = (currentIndex - 1 + Data.length) % Data.length; // Loop back to the last sneaker
+    const prevIndex = (currentIndex - 1 + Data.length) % Data.length;
     setSelectedSneaker(Data[prevIndex]);
   };
 
@@ -161,13 +161,6 @@ const Home = ({ addToCart }) => {
           </button>
         </div>
       </div>
-
-      {/* Custom success message */}
-      {successMessage && (
-        <div className="fixed px-4 py-2 text-white transform -translate-x-1/2 bg-green-500 rounded-md shadow-lg top-4 left-1/2">
-          {successMessage}
-        </div>
-      )}
     </section>
   );
 };

@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DeleteIcon from "../assets/images/icon-delete.svg";
 import Spinner from "../assets/images/spinner.gif";
+import { CartContext } from "./context/CartContext";
 
-const Cart = ({ cartItems, removeItem }) => {
+const Cart = () => {
   const [loading, setLoading] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false); // State for showing success message
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const { cartItems, removeItem } = useContext(CartContext);
 
   const handleCheckout = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setPaymentSuccess(true); // Show success message after 3 seconds
+      setPaymentSuccess(true);
       setTimeout(() => {
-        window.location.reload(); // Refresh the page after 3 seconds
-      }, 500); // Delay refresh to allow success message to show first
+        window.location.reload();
+      }, 500);
     }, 3000);
   };
 
@@ -41,7 +43,10 @@ const Cart = ({ cartItems, removeItem }) => {
               <div className="flex flex-col justify-between flex-1">
                 <div className="flex items-center justify-between">
                   <p className="text-[10px] font-semibold">{item.name}</p>
-                  <button onClick={() => removeItem(item.id)}>
+                  <button
+                    onClick={() => removeItem(item.id)}
+                    className="cursor-pointer "
+                  >
                     <img src={DeleteIcon} alt="Delete" className="w-3 h-3" />
                   </button>
                 </div>

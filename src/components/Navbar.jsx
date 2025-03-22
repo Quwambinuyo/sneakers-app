@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import cartIcon from "../assets/images/icon-cart.svg";
 import Avatar from "../assets/images/image-avatar.png";
 import Cart from "./Cart";
+import { CartContext } from "./context/CartContext";
 
-const Navbar = ({ cartItems = [], removeItem }) => {
+const Navbar = () => {
+  const { cartItems, removeItem } = useContext(CartContext);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
